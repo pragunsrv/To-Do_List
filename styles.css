@@ -1,6 +1,15 @@
+/* General resets */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif; /* Minimalistic font */
+}
+
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    background: url('walp2.jpg') no-repeat center center fixed; /* Replace with your wallpaper image */
+    background-size: cover; /* Cover the entire viewport */
+    color: #fff; /* White text color for contrast */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -9,16 +18,21 @@ body {
 }
 
 .container {
-    background: #fff;
+    background: rgba(31, 31, 31, 0.8); /* Dark grey background with some transparency */
     padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 300px;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    width: 100%;
+    max-width: 800px;
+    height: 100%;
+    max-height: 100%;
+    overflow-y: auto;
 }
 
 h1 {
-    text-align: center;
-    color: #333;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #fff;
 }
 
 .input-container {
@@ -29,22 +43,36 @@ h1 {
 
 input[type="text"] {
     width: 80%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 3px;
+    padding: 15px;
+    border: 1px solid #333; /* Dark grey border */
+    border-radius: 5px;
+    background: #2e2e2e; /* Slightly lighter grey for input */
+    color: #fff;
+    font-size: 16px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input[type="text"]:focus {
+    border-color: #555; /* Slightly lighter grey on focus */
+    outline: none;
+    box-shadow: 0 0 10px rgba(85, 85, 85, 0.5);
 }
 
 button {
-    padding: 10px;
+    width: 18%;
+    padding: 15px;
     border: none;
-    background: #333;
+    background: #555; /* Grey button background */
     color: #fff;
-    border-radius: 3px;
+    border-radius: 5px;
     cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s, transform 0.2s;
 }
 
 button:hover {
-    background: #555;
+    background: #666; /* Lighter grey on hover */
+    transform: scale(1.05);
 }
 
 ul {
@@ -53,24 +81,66 @@ ul {
 }
 
 li {
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 3px;
+    padding: 15px;
+    border: 1px solid #333; /* Dark grey border */
+    border-radius: 5px;
     margin-bottom: 10px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    position: relative;
+    background: #2e2e2e; /* Dark grey background for tasks */
+    transition: background 0.3s;
 }
 
-li .delete-btn {
-    background: #e74c3c;
-    border: none;
-    color: #fff;
-    padding: 5px 10px;
-    border-radius: 3px;
+li:hover {
+    background: #3a3a3a; /* Slightly lighter grey on hover */
+}
+
+li:focus {
+    outline: none;
+    background: #3a3a3a; /* Slightly lighter grey on focus */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+li .task-content {
+    display: flex;
+    align-items: center;
+    flex: 1;
+}
+
+.checkbox {
+    margin-right: 15px;
     cursor: pointer;
 }
 
-li .delete-btn:hover {
-    background: #c0392b;
+.task-name {
+    flex: 1;
+    font-size: 1rem;
+    color: #fff;
+}
+
+.task-time {
+    font-size: 0.8rem;
+    color: #bbb; /* Light grey for timestamps */
+}
+
+.delete-btn {
+    background: #444; /* Dark grey background */
+    border: none;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+    position: absolute;
+    right: 10px;
+    display: none;
+}
+
+.delete-btn:hover {
+    background: #555; /* Slightly lighter grey on hover */
+}
+
+li:hover .delete-btn {
+    display: block;
 }
