@@ -3,13 +3,13 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Arial', sans-serif; /* Minimalistic font */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Minimalistic font */
 }
 
 body {
-    background: url('walp2.jpg') no-repeat center center fixed; /* Replace with your wallpaper image */
-    background-size: cover; /* Cover the entire viewport */
-    color: #fff; /* White text color for contrast */
+    background: url('walp2.jpg') no-repeat center center fixed; /* Background image */
+    background-size: cover;
+    color: #fff; /* White text color */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -18,61 +18,80 @@ body {
 }
 
 .container {
-    background: rgba(31, 31, 31, 0.8); /* Dark grey background with some transparency */
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
-    width: 100%;
-    max-width: 800px;
-    height: 100%;
-    max-height: 100%;
+    background: rgba(0, 0, 0, 0.8); /* Semi-transparent dark background */
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
+    width: 90%;
+    max-width: 900px;
+    height: 90%;
+    max-height: 90%;
     overflow-y: auto;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.container:hover {
+    transform: scale(1.03);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.9);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 h1 {
-    font-size: 2rem;
+    font-size: 2.8rem;
     margin-bottom: 20px;
+    text-align: center;
     color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
 }
 
 .input-container {
     display: flex;
-    justify-content: space-between;
+    gap: 10px;
     margin-bottom: 20px;
 }
 
 input[type="text"] {
-    width: 80%;
+    flex: 1;
     padding: 15px;
-    border: 1px solid #333; /* Dark grey border */
-    border-radius: 5px;
-    background: #2e2e2e; /* Slightly lighter grey for input */
-    color: #fff;
+    border: 1px solid #555;
+    border-radius: 15px;
+    background: #222;
+    color: #eee;
     font-size: 16px;
-    transition: border-color 0.3s, box-shadow 0.3s;
+    transition: border-color 0.3s, box-shadow 0.3s, transform 0.2s;
 }
 
 input[type="text"]:focus {
-    border-color: #555; /* Slightly lighter grey on focus */
+    border-color: #888;
     outline: none;
-    box-shadow: 0 0 10px rgba(85, 85, 85, 0.5);
+    box-shadow: 0 0 12px rgba(136, 136, 136, 0.6);
+    transform: scale(1.02);
 }
 
 button {
-    width: 18%;
-    padding: 15px;
+    padding: 15px 20px;
     border: none;
-    background: #555; /* Grey button background */
+    background: #444;
     color: #fff;
-    border-radius: 5px;
+    border-radius: 15px;
     cursor: pointer;
     font-size: 16px;
     transition: background 0.3s, transform 0.2s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
 
 button:hover {
-    background: #666; /* Lighter grey on hover */
-    transform: scale(1.05);
+    background: #555;
+    transform: translateY(-2px);
 }
 
 ul {
@@ -82,65 +101,117 @@ ul {
 
 li {
     padding: 15px;
-    border: 1px solid #333; /* Dark grey border */
-    border-radius: 5px;
-    margin-bottom: 10px;
+    border: 1px solid #555;
+    border-radius: 15px;
+    margin-bottom: 15px;
     display: flex;
     align-items: center;
     position: relative;
-    background: #2e2e2e; /* Dark grey background for tasks */
-    transition: background 0.3s;
+    background: #333;
+    transition: background 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
 }
 
 li:hover {
-    background: #3a3a3a; /* Slightly lighter grey on hover */
+    background: #444;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6);
 }
 
 li:focus {
     outline: none;
-    background: #3a3a3a; /* Slightly lighter grey on focus */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    background: #444;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.7);
 }
 
 li .task-content {
     display: flex;
     align-items: center;
     flex: 1;
+    gap: 15px;
 }
 
 .checkbox {
-    margin-right: 15px;
     cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.checkbox:checked + .task-name {
+    text-decoration: line-through;
+    color: #999;
 }
 
 .task-name {
     flex: 1;
-    font-size: 1rem;
+    font-size: 1.2rem;
     color: #fff;
+    transition: color 0.2s;
 }
 
 .task-time {
-    font-size: 0.8rem;
-    color: #bbb; /* Light grey for timestamps */
+    font-size: 0.9rem;
+    color: #aaa;
+    position: absolute;
+    right: 60px;
+    transition: opacity 0.3s;
 }
 
 .delete-btn {
-    background: #444; /* Dark grey background */
+    background: #e74c3c;
     border: none;
     color: #fff;
     padding: 10px;
-    border-radius: 5px;
+    border-radius: 15px;
     cursor: pointer;
-    transition: background 0.3s;
+    transition: background 0.3s, transform 0.2s;
     position: absolute;
     right: 10px;
-    display: none;
+    top: 10px;
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.2s ease;
 }
 
 .delete-btn:hover {
-    background: #555; /* Slightly lighter grey on hover */
+    background: #c0392b;
+    transform: scale(1.1);
 }
 
 li:hover .delete-btn {
-    display: block;
+    opacity: 1;
+}
+
+li:hover .task-time {
+    opacity: 0;
+}
+
+/* Digital Clock */
+.digital-clock {
+    font-size: 2rem;
+    color: #fff;
+    text-align: center;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+/* Pomodoro Timer */
+.pomodoro-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.pomodoro-time {
+    font-size: 3rem;
+    color: #fff;
+    background: #444;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+}
+
+.pomodoro-controls {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
 }

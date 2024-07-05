@@ -3,17 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Enhanced To-Do List</title>
+    <title>Enhanced To-Do List with Pomodoro Clock</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
         <h1>To-Do List</h1>
         <div class="input-container">
-            <input type="text" id="new-task" placeholder="Add a new task">
+            <input type="text" id="new-task" placeholder="Add a new task" autofocus>
             <button onclick="addTask()">Add</button>
         </div>
         <ul id="task-list"></ul>
+        
+        <!-- Digital Clock -->
+        <div class="digital-clock" id="digital-clock"></div>
+        
+        <!-- Pomodoro Clock -->
+        <div class="pomodoro-container">
+            <div class="pomodoro-time" id="pomodoro-time">25:00</div>
+            <div class="pomodoro-controls">
+                <button id="pomodoro-toggle" onclick="togglePomodoro()">Start</button>
+                <button id="pomodoro-reset" onclick="resetPomodoro()">Reset</button>
+            </div>
+        </div>
     </div>
     <script src="script.js"></script>
 </body>
